@@ -13,7 +13,7 @@ describe 'ember-cli-deploy', ->
     require('../src/ember-cli-deploy')(@robot)
 
   it 'registers a respond listener', ->
-    expect(@robot.respond).to.have.been.calledWith(/hello/)
+    expect(@robot.respond).to.have.been.calledWith(/ember deploy/)
 
   it 'registers a hear listener', ->
-    expect(@robot.hear).to.have.been.calledWith(/orly/)
+    expect(@robot.hear).to.have.been.calledWith(/continuous deployment/)
