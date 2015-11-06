@@ -12,7 +12,12 @@
   "bugs": {
     "url": "https://github.com/hubot-scripts/hubot-ember-cli-deploy/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ember-cli": "^1.13.8",
+    "ember-cli-deploy": "^0.5.0",
+    "fs-extra": "^0.26.2",
+    "nodegit": "^0.5.0"
+  },
   "peerDependencies": {
     "hubot": "2.x"
   },
