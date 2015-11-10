@@ -27,25 +27,25 @@ module.exports = function(robot) {
     var appName = deployArgs.split(' ')[0];
     var localPath = path.join(__dirname, '..', scriptRootDirName, appName);
     fs.ensureDirSync(localPath);
-    // var repoName = 'chrislopresto/bateman-ember';
-    // var repoName = 'yappbox/account';
     var repoName = deployArgs;
-    var cloneURL = 'https://github.com/' + repoName + '.git';
+    var repoUrl = 'https://' + GITHUB_TOKEN +
+      ':x-oauth-basic@github.com/' +
+      repoName + '.git';
 
-    console.log('Cloning: ', cloneURL);
+    console.log('Cloning: ', repoUrl);
 
     var cloneOptions = {
       remoteCallbacks: {
         certificateCheck: function() {
           return 1;
+        },
+        credentials: function() {
+          return nodegit.Cred.userpassPlaintextNew(GITHUB_TOKEN, 'x-oauth-basic');
         }
-      },
-      credentials: function() {
-        return nodegit.Cred.userpassPlaintextNew(GITHUB_TOKEN, '');
       }
     };
 
-    var cloneRepository = nodegit.Clone(cloneURL, localPath, cloneOptions);
+    var cloneRepository = nodegit.Clone(repoUrl, localPath, cloneOptions);
 
     var errorAndAttemptOpen = function() {
       return nodegit.Repository.open(localPath);
