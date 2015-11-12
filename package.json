@@ -1,7 +1,7 @@
 {
   "name": "hubot-ember-cli-deploy",
   "description": "A Hubot script for Ember CLI Deploy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Chris LoPresto <chris@chrislopresto.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",
