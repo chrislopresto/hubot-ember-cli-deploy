@@ -52,15 +52,14 @@ module.exports = function(robot) {
       repository = response;
     }).catch(function() {
       console.log('clone catch', arguments);
-      repository = nodegit.Repository.open(localPath);
-      return repository;
+      return;
     }).then(function() {
       if (repository) {
         console.log('Is the repository bare? %s', Boolean(repository.isBare()));
       }
       console.log('clone finally', arguments);
       var cdCommand = 'cd ' + localPath + ' && pwd && ';
-      var deployCommand = 'npm install && bower install && ember deploy prod';
+      var deployCommand = 'npm install && bower install && ember deploy prod --activate';
       var cmd = cdCommand + deployCommand;
       console.log('executing ', cmd);
       exec(cmd, function(err, stdout, stderr) {
